@@ -87,14 +87,22 @@ item=temps:first()
 while item ~= nil
 do
 	str=ReadFile(string.gsub(item, "input$","label"))
+
 	if string.sub(str, 1,5)=="Core "
 	then
 		id="cpu"..string.sub(str, 6)
-		cpus[id].temp_curr=tonumber(ReadFile(item)) / 1000
+		id=strutil.stripTrailingWhitespace(id)
+
+		str=ReadFile(item)
+		if str ~= nil then cpus[id].temp_curr=tonumber(str) / 1000 end
+
 		str=string.gsub(item, "input$","max")
-		cpus[id].temp_max=tonumber(ReadFile(str)) / 1000
+		str=ReadFile(str)
+		if str ~= nil then cpus[id].temp_max=tonumber(str) / 1000 end
+
 		str=string.gsub(item, "input$","crit")
-		cpus[id].temp_crit=tonumber(ReadFile(str)) / 1000
+		str=ReadFile(str)
+		if str ~= nil then cpus[id].temp_crit=tonumber(str) / 1000 end
 
 	end
 	item=temps:next()
