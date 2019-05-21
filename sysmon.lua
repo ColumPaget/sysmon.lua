@@ -174,7 +174,7 @@ end
 
 
 function CpuSortCompare(i1, i2)
-return i1.name < i2.name
+return tonumber( string.sub(i1.name, 4) ) < tonumber(string.sub(i2.name , 4))
 end
 
 
