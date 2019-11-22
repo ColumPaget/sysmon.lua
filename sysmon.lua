@@ -149,7 +149,7 @@ cpus[name].last_total=0
 end
 
 
-if filesys.exists(path.."/cpufreq/scaling_driver") > 0
+if filesys.exists(path.."/cpufreq/scaling_driver") == true
 then
 	cpus[name].freq_driver=ReadFile(path.."/cpufreq/scaling_driver")
 	cpus[name].freq_governor=ReadFile(path.."/cpufreq/scaling_governor")
