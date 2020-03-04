@@ -498,7 +498,7 @@ local cpu_models={}
 
 if sys_info.product_name ~= nil
 then
-Out:puts("SYS:  " .. sys.hostname() .. " '" .. sys_info.product_name.."' up: " .. time.format("%d days + %H:%M:%S", sys.uptime()) .. "\n")
+Out:puts("SYS:  " .. sys.hostname() .. " '" .. sys_info.product_name.."' up: " .. string.format("%d days", math.floor(sys.uptime() / (3600 * 24))) .. time.format(" + %H:%M:%S", sys.uptime()) .. "\n")
 end
 
 Out:puts("BIOS: " .. sys_info.bios.vendor .. " " .. sys_info.bios.version .. " " .. sys_info.bios.date .."\n")
